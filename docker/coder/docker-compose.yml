@@ -2,7 +2,8 @@ services:
   coder:
     # This MUST be stable for our documentation and
     # other automations.
-    image: ghcr.io/coder/coder:v2.23.1
+    image: ghcr.io/coder/coder:v2.25.2
+    container_name: coder
     ports:
       - "7080:7080"
     restart: unless-stopped
@@ -30,13 +31,16 @@ services:
     # lines and set the group ID to one that has write
     # permissions on the docker socket.
     group_add:
-      - "996" # docker group on host
+      - "989" # docker group on host
     volumes:
+      # By mounting the Docker socket, the coder service can create and manage other Docker containers (in this case, user workspaces) directly from within its own container.
       - /var/run/docker.sock:/var/run/docker.sock
       # Run "docker volume rm coder_coder_home" to reset the dev tunnel url (https://abc.xyz.try.coder.app).
       # This volume is not required in a production environment - you may safely remove it.
       # Coder can recreate all the files it needs on restart.
-      - coder_home:/home/coder
+      # place the mounted docker volume in the directory for this container
+      - /root/containers/coder/coder_data:/home/coder
+      #- coder_home:/home/coder
     depends_on:
       database:
         condition: service_healthy
@@ -44,6 +48,7 @@ services:
     # Minimum supported version is 13.
     # More versions here: https://hub.docker.com/_/postgres
     image: "postgres:17"
+    container_name: postgres
     # Uncomment the next two lines to allow connections to the database from outside the server.
     #ports:
     #  - "5432:5432"
@@ -53,7 +58,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password} # The PostgreSQL password (useful to connect to the database)
       POSTGRES_DB: ${POSTGRES_DB:-coder} # The PostgreSQL default database (automatically created at first launch)
     volumes:
-      - coder_data:/var/lib/postgresql/data # Use "docker volume rm coder_coder_data" to reset Coder
+      -  /root/containers/coder/postgres_data:/var/lib/postgresql/data
+      #- coder_data:/var/lib/postgresql/data # Use "docker volume rm coder_coder_data" to reset Coder
     healthcheck:
       test:
         [
@@ -63,6 +69,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-volumes:
-  coder_data:
-  coder_home:
+#volumes:
+#  coder_data:
+#  coder_home:
