@@ -50,6 +50,10 @@ apt update && apt upgrade -y
   ```
   - do portainer inital setup
 - install coder, using the docker-compose.yml
-  -   
+  - first get the "docker group id", you will need this later
+  ```bash
+  getent group docker | cut -d: -f3
+  ```
+-   
 
    
