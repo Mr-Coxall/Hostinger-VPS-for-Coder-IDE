@@ -38,7 +38,6 @@ apt update && apt upgrade -y
   -  docker/portainer
   -  docker/coder
 - install portainer, use included docker-compose.yml
-  - add Hostinger firewall rule to all 9443 access
-  - ensure you start with adding a "block all" firewall rule 
+  - 
 
    
