@@ -38,6 +38,16 @@ apt update && apt upgrade -y
   -  docker/portainer
   -  docker/coder
 - install portainer, use included docker-compose.yml
+  - start it up
+  ```bash
+  docker compose up -d
+  ```
+  - temporarily add in firewall rule to Hostinger to all 9443, so you can get portainer started up
+  - "accept, TCP, 9443, Anywhere" and then sync
+  - use ip address to get in
+  ```bash
+  https://xxx.xxx.xxx.xxx:9443
+  ```
   - 
 
    
