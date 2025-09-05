@@ -3,7 +3,10 @@
 - Goto "Setting, OS & Panel, Reinstall" and reinstall a fresh Debian OS on the box, whipping out everything
   - It will ask for a new root password, ensure you remember it!
 - Click "Browser Terminal" to get in
-- apt update && apt upgrade -y
+- update system
+```bash
+apt update && apt upgrade -y
+```
 - Install Docker, it MSUT be docker and not podman, because Coder IDE uses docker.
   - Follow these instruction to add in docker: https://docs.docker.com/engine/install/debian/
   ```bash
@@ -21,4 +24,14 @@
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   sudo apt-get update
   ```
-- xxx
+  - then
+  ```bash
+  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  ```
+- now create directories for docker-compose files
+  -  docker
+  -  docker/portainer
+  -  docker/coder
+-   
+
+   
