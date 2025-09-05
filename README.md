@@ -48,6 +48,8 @@ apt update && apt upgrade -y
   ```bash
   https://xxx.xxx.xxx.xxx:9443
   ```
-  - 
+  - do portainer inital setup
+- install coder, using the docker-compose.yml
+  -   
 
    
