@@ -12,14 +12,14 @@ services:
       # You'll need to set CODER_ACCESS_URL to an IP or domain
       # that workspaces can reach. This cannot be localhost
       # or 127.0.0.1 for non-Docker templates!
-      CODER_ACCESS_URL: "http://ics3c-1.local"
+      CODER_ACCESS_URL: "http://xxx.xxx.xxx.xxx:7080"
       # allow admin to open all user containers
       CODER_DANGEROUS_ALLOW_PATH_APP_SITE_OWNER_ACCESS: true
       # for GitHub Auth
       CODER_OAUTH2_GITHUB_ALLOW_SIGNUPS: true
-      CODER_OAUTH2_GITHUB_ALLOWED_ORGS: "zzzz"
-      CODER_OAUTH2_GITHUB_CLIENT_ID: "xxx"
-      CODER_OAUTH2_GITHUB_CLIENT_SECRET: "yyy"
+      CODER_OAUTH2_GITHUB_ALLOWED_ORGS: "OCSB-ICS3UV-2025"
+      CODER_OAUTH2_GITHUB_CLIENT_ID: "Ov23liZnORCTG2l4TYU8"
+      CODER_OAUTH2_GITHUB_CLIENT_SECRET: "5c57d39a8bf79a12182786e8bfb940830cf100bc"
       # remove GitHub auth
       CODER_OAUTH2_GITHUB_DEFAULT_PROVIDER_ENABLE: true
       # remove email login
