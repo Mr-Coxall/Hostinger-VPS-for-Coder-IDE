@@ -3,13 +3,15 @@
 - Goto "Setting, OS & Panel, Reinstall" and reinstall a fresh Debian OS on the box, whipping out everything
   - It will ask for a new root password, ensure you remember it!
 - Goto "Security Firewall", and all SSH on 2222 (Hostinger standard) and then block everything else (drop any)
+  - do not forget to click "sync" or the firewall will not be updated! 
 - Click "Browser Terminal" to get in
 - update system
 ```bash
 apt update && apt upgrade -y
 ```
-- Install Cloudflare, to securely access all docker apps
-  - confirm cloudflared is visible 
+- Install Cloudflare Tunnel, to securely access all docker apps
+  - once active you can just quiet on the 1st screen, you can add ther rest later
+  - confirm cloudflared is visible
 - Install Docker, it MSUT be docker and not podman, because Coder IDE uses docker.
   - Follow these instruction to add in docker: https://docs.docker.com/engine/install/debian/
   ```bash
